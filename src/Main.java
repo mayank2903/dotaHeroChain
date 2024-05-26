@@ -3,8 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
-
-  // TODO: convert these to camelCase so its easier to read final output.
+  
   private static final String[] DOTA_HEROES = {"ABADDON", "ALCHEMIST", "ANCIENT APPARITION",
       "ANTI-MAGE", "ARC WARDEN", "AXE", "BANE", "BATRIDER", "BEASTMASTER", "BLOODSEEKER",
       "BOUNTY HUNTER", "BREWMASTER", "BRISTLEBACK", "BROODMOTHER", "CENTAUR WARRUNNER",
