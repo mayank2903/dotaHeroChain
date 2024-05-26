@@ -28,24 +28,22 @@ public class Main {
   public static void main(String[] args) {
     // 1. Pre-computation.
     Map<Character, ArrayList<Integer>> heroesIndexedByFirstLetter = new HashMap<>();
-    Map<Character, ArrayList<Integer>> heroesIndexedByLastLetter = new HashMap<>();
     for (int i = 0; i < DOTA_HEROES.length; i++) {
       String hero = DOTA_HEROES[i];
       char startingChar = hero.charAt(0);
-      char endingChar = hero.charAt(hero.length() - 1);
 
       heroesIndexedByFirstLetter.computeIfAbsent(startingChar, v -> new ArrayList<>()).add(i);
-      heroesIndexedByLastLetter.computeIfAbsent(endingChar, v -> new ArrayList<>()).add(i);
     }
 
+    // 2. Form sub-graphs starting at each hero.
     Node[] graphs = new Node[DOTA_HEROES.length];
-
     for (int i = 0; i < DOTA_HEROES.length; i++) {
       System.out.println("Forming graph starting:" + DOTA_HEROES[i]);
       graphs[i] = traverse(i, new boolean[DOTA_HEROES.length], new Node[DOTA_HEROES.length],
           heroesIndexedByFirstLetter);
     }
 
+    // 3. Compare depths of each of the above graphs, and form answer.
     int maxDepth = 0;
     ArrayList<String> longestSequence = new ArrayList<>();
     for (int i = 0; i < DOTA_HEROES.length; i++) {
